@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Tour{% endblock %}
+
+{% block header %}Add Tour{% endblock %}
+
+{% block content %}
+<h2>Add New Tour</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Tour</button>
+</form>
+{% endblock %}

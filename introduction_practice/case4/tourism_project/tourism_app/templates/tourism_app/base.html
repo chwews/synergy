@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Website{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}My Website{% endblock %}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'tour_list' %}">Tours</a></li>
+                <li><a href="{% url 'service_list' %}">Services</a></li>
+                <li><a href="{% url 'client_list' %}">Clients</a></li>
+                <li><a href="{% url 'operator_list' %}">Operators</a></li>
+                <li><a href="{% url 'order_list' %}">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 TourismDB</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Service List{% endblock %}
+
+{% block header %}Service List{% endblock %}
+
+{% block content %}
+<h2>Services</h2>
+<a href="{% url 'add_service' %}" class="button">Add New Service</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.service_name }}</td>
+            <td>{{ service.service_description }}</td>
+            <td>{{ service.price }}</td>
+            <td>
+                <form method="post" action="{% url 'confirm_delete' 'service' service.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No services available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

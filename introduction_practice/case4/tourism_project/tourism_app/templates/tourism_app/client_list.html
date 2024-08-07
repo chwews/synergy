@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Client List{% endblock %}
+
+{% block header %}Client List{% endblock %}
+
+{% block content %}
+<h2>Clients</h2>
+<a href="{% url 'add_client' %}" class="button">Add New Client</a>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone_number }}</td>
+            <td>
+                <form method="post" action="{% url 'confirm_delete' 'client' client.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No clients available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

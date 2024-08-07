@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Deletion</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Confirm Deletion</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Back to Home</a></li>
+                <li><a href="{% url 'tour_list' %}">Back to Tours List</a></li>
+                <li><a href="{% url 'client_list' %}">Back to Clients List</a></li>
+                <li><a href="{% url 'service_list' %}">Back to Services List</a></li>
+                <li><a href="{% url 'operator_list' %}">Back to Operators List</a></li>
+                <li><a href="{% url 'order_list' %}">Back to Orders List</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <p>Are you sure you want to delete "{{ item_name }}" from {{ item_type }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 TourismDB</p>
+    </footer>
+</body>
+</html>

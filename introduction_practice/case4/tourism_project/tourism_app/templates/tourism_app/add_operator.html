@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Operator{% endblock %}
+
+{% block header %}Add Operator{% endblock %}
+
+{% block content %}
+<h2>Add New Operator</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Operator</button>
+</form>
+{% endblock %}
