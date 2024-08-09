@@ -10,7 +10,7 @@
 ## Пример использования
 
 ```python
-from functions import find_minmax_indexes, find_negative_sum
+from solution import find_minmax_indexes, find_negative_sum
 
 arr = [1, -4, 3, -2, 5]
 
